@@ -4,15 +4,22 @@
     <div class="form signup" @click="active_add_remove(1)">
       <header>Signup</header>
       <form action="#">
-        <input type="text" placeholder="Full name" v-model="name"  />
-        <input type="text" placeholder="Email address" v-model="email"  />
-        <input type="password" placeholder="Password" v-model="password" />
-        <input type="password" placeholder="Password" v-model="c_password" />
+        <input type="text" placeholder="Full name" v-model="name" @input="required_name=''"  />
+        <span class="error" v-if="required_name !=''">{{ required_name }}</span>
+        <input type="text" placeholder="Email address" v-model="email" @input="check_email()"  />
+        <span class="error" v-if="required_email !=''">{{ required_email }}</span>
 
+        <input type="password" placeholder="Password" v-model="password" @input="required_password=''" />
+        <span class="error" v-if="required_password !=''">{{ required_password }}</span>
+
+        <input type="password" @input="check_passwords()" placeholder="Confirm Password" v-model="c_password" />
+        <span class="error" v-if="required_c_password !=''">{{ required_c_password }}</span>
+
+<!-- 
         <div class="checkbox">
           <input type="checkbox" id="signupCheck" />
           <label for="signupCheck">I accept all terms & conditions</label>
-        </div>
+        </div> -->
         <input type="button" value="Signup" @click="register()" />
       </form>
     </div>
@@ -59,8 +66,6 @@ export default {
 
     },
     check_passwords() {
-      console.log('pass=>', this.password);
-      console.log('c=>', this.c_password);
       if (this.password !== this.c_password) {
         this.required_c_password = 'Password not match'
       }
@@ -83,16 +88,17 @@ export default {
     },
     check_all_required_fileds() {
       let flag = true;
+      if (this.required_name == '') {
+        this.required_name = 'Enter Name'
+        return false;
+
+      }
       if (this.required_email == '') {
         this.required_email = 'Enter E-mail Address'
         return false;
 
       }
-      if (this.required_name == '') {
-        this.required_email = 'Enter Name'
-        return false;
-
-      }
+      
       if (this.required_password == '') {
         this.required_email = 'Enter Password'
         return false;
@@ -108,28 +114,39 @@ export default {
 
     },
     register() {
-      this.$toast.open({
+      let check = this.check_all_required_fileds();
+      
+      if(check)
+      {
+        let regist = {
+          name:this.name,
+          email:this.email,
+          password:this.password,
+          confirmPassword:this.confirmPassword,
+        }
+
+        this.$http.post("register",regist).then((res) => {
+          if(res.data.status_code ==200)
+          {
+            this.$toast.open({
         message: 'Registration Success!',
         type: 'success',
         position: 'top-right'
 
         // all of other options may go here
       });
-      this.$http.get("test").then((res) => {
-        console.log(res.data);
-      })
-      let check = this.check_all_required_fileds();
+      this.active_add_remove(0)
 
-
-      if (check) {
-
-        console.log('Name->', this.name);
-        console.log('Email->', this.email);
-        console.log('Password->', this.password);
-        console.log('C Password->', this.c_password);
-        this.store_login_data.setToken('123')
-
+          }
+        })
+        
       }
+
+
+      // if (check) {
+
+
+      // }
 
 
     },
@@ -152,6 +169,9 @@ export default {
 }
 </script>
 <style>
+.error{
+  color: red;
+}
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
 * {
