@@ -1,396 +1,34 @@
 
-<style scoped>
-*,
-*:before,
-*:after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Nunito', sans-serif;
-}
-.capitalize-first {
-    text-transform: capitalize !important;
-}
-.centered-div {
-  position: absolute !important;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) !important;
-}
-
-
-
-.error {
-  color: red;
-}
-
-body {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Nunito', sans-serif;
-  border-radius: 50%;
-}
-
-input,
-button {
-  border: none;
-  background: none;
-}
-
-.cont {
-  overflow: hidden;
-  position: relative;
-  width: 900px;
-  height: 550px;
-  background: #c9def0;
-  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
-  border-radius: 15px;
-}
-
-.form {
-  position: relative;
-  width: 640px;
-  height: 100%;
-  padding: 50px 30px;
-  -webkit-transition: -webkit-transform 1.2s ease-in-out;
-  transition: -webkit-transform 1.2s ease-in-out;
-  transition: transform 1.2s ease-in-out;
-  transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
-}
-
-h2 {
-  width: 100%;
-  font-size: 30px;
-  text-align: center;
-}
-
-label {
-  display: block;
-  width: 260px;
-  margin: 25px auto 0;
-  text-align: center;
-}
-
-label span {
-  font-size: 14px;
-  font-weight: 600;
-  color: #505f75;
-  text-transform: uppercase;
-}
-
-input {
-  display: block;
-  width: 100%;
-  margin-top: 5px;
-  font-size: 16px;
-  padding-bottom: 5px;
-  border-bottom: 1px solid rgba(109, 93, 93, 0.4);
-  text-align: center;
-  font-family: 'Nunito', sans-serif;
-}
-
-button {
-  display: block;
-  margin: 0 auto;
-  width: 260px;
-  height: 36px;
-  border-radius: 30px;
-  color: #fff;
-  font-size: 15px;
-  cursor: pointer;
-}
-
-.submit {
-  margin-top: 40px;
-  margin-bottom: 30px;
-  text-transform: uppercase;
-  font-weight: 600;
-  font-family: 'Nunito', sans-serif;
-  background: rgb(131, 128, 128);
-  transition: .5s;
-}
-
-.submit:hover {
-  transition: .5s;
-  background: #000;
-}
-
-.forgot-pass {
-  margin-top: 15px;
-  text-align: center;
-  font-size: 14px;
-  font-weight: 600;
-  color: #0c0101;
-  cursor: pointer;
-}
-
-.forgot-pass:hover {
-  color: red;
-}
-
-.social-media {
-  width: 100%;
-  text-align: center;
-  margin-top: 20px;
-}
-
-.social-media ul {
-  list-style: none;
-}
-
-.social-media ul li {
-  display: inline-block;
-  cursor: pointer;
-  margin: 25px 10px;
-}
-
-.social-media img {
-  width: 20px;
-  height: 20px;
-}
-
-.sub-cont {
-  overflow: hidden;
-  position: absolute;
-  left: 640px;
-  top: 0;
-  width: 900px;
-  height: 100%;
-  padding-left: 260px;
-  background: #fff;
-  -webkit-transition: -webkit-transform 1.2s ease-in-out;
-  transition: -webkit-transform 1.2s ease-in-out;
-  transition: transform 1.2s ease-in-out;
-}
-
-.cont.s-signup .sub-cont {
-  -webkit-transform: translate3d(-640px, 0, 0);
-  transform: translate3d(-640px, 0, 0);
-}
-
-.img {
-  overflow: hidden;
-  z-index: 2;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 260px;
-  height: 100%;
-  padding-top: 360px;
-}
-
-.img:before {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 900px;
-  height: 100%;
-  background-image: url(./assets/logo.png);
-  background-size: cover;
-  transition: -webkit-transform 1.2s ease-in-out;
-  transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
-}
-
-.img:after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.cont.s-signup .img:before {
-  -webkit-transform: translate3d(640px, 0, 0);
-  transform: translate3d(640px, 0, 0);
-}
-
-.img-text {
-  z-index: 2;
-  position: absolute;
-  left: 0;
-  top: 50px;
-  width: 100%;
-  padding: 0 20px;
-  text-align: center;
-  color: #fff;
-  -webkit-transition: -webkit-transform 1.2s ease-in-out;
-  transition: -webkit-transform 1.2s ease-in-out;
-  transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
-}
-
-.img-text h2 {
-  margin-bottom: 10px;
-  font-weight: normal;
-}
-
-.img-text p {
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.cont.s-signup .img-text.m-up {
-  -webkit-transform: translateX(520px);
-  transform: translateX(520px);
-}
-
-.img-text.m-in {
-  -webkit-transform: translateX(-520px);
-  transform: translateX(-520px);
-}
-
-.cont.s-signup .img-text.m-in {
-  -webkit-transform: translateX(0);
-  transform: translateX(0);
-}
-
-
-.sign-in {
-  padding-top: 65px;
-  -webkit-transition-timing-function: ease-out;
-  transition-timing-function: ease-out;
-}
-
-.cont.s-signup .sign-in {
-  -webkit-transition-timing-function: ease-in-out;
-  transition-timing-function: ease-in-out;
-  -webkit-transition-duration: 1.2s;
-  transition-duration: 1.2s;
-  -webkit-transform: translate3d(640px, 0, 0);
-  transform: translate3d(640px, 0, 0);
-}
-
-.img-btn {
-  overflow: hidden;
-  z-index: 2;
-  position: relative;
-  width: 100px;
-  height: 36px;
-  margin: 0 auto;
-  background: transparent;
-  color: #fff;
-  text-transform: uppercase;
-  font-size: 15px;
-  cursor: pointer;
-}
-
-.img-btn:after {
-  content: '';
-  z-index: 2;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  border: 2px solid #fff;
-  border-radius: 30px;
-}
-
-.img-btn span {
-  position: absolute;
-  left: 0;
-  top: 0;
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-pack: center;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  -webkit-transition: -webkit-transform 1.2s;
-  transition: -webkit-transform 1.2s;
-  transition: transform 1.2s;
-  transition: transform 1.2s, -webkit-transform 1.2s;
-  ;
-}
-
-.img-btn span.m-in {
-  -webkit-transform: translateY(-72px);
-  transform: translateY(-72px);
-}
-
-.cont.s-signup .img-btn span.m-in {
-  -webkit-transform: translateY(0);
-  transform: translateY(0);
-}
-
-.cont.s-signup .img-btn span.m-up {
-  -webkit-transform: translateY(72px);
-  transform: translateY(72px);
-}
-
-.sign-up {
-  -webkit-transform: translate3d(-900px, 0, 0);
-  transform: translate3d(-900px, 0, 0);
-}
-
-.cont.s-signup .sign-up {
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-}
-</style>
 <template>
-  <div class="cont centered-div">
-    <div class="form sign-in">
-      <h2>Sign In</h2>
-      <label>
-        <span>Email Address</span>
-        <input type="email" name="email" @input="check_email()" v-model="email">
-        <span class="error capitalize-first" v-if="required_email != ''">{{ required_email }}</span>
-      </label>
-      <label>
-        <span>Password</span>
-        <input type="password" v-model="password" name="password">
-      </label>
-      <button class="submit" type="button" @click="login()">Sign In</button>
+  <section class="wrapper" :class="is_active">
+    <div class="form signup" @click="active_add_remove(1)">
+      <header>Signup</header>
+      <form action="#">
+        <input type="text" placeholder="Full name" v-model="name"  />
+        <input type="text" placeholder="Email address" v-model="email"  />
+        <input type="password" placeholder="Password" v-model="password" />
+        <input type="password" placeholder="Password" v-model="c_password" />
 
-
-
+        <div class="checkbox">
+          <input type="checkbox" id="signupCheck" />
+          <label for="signupCheck">I accept all terms & conditions</label>
+        </div>
+        <input type="button" value="Signup" @click="register()" />
+      </form>
     </div>
 
-    <div class="sub-cont">
-      <div class="img">
-        <div class="img-text m-up">
-          <h1>New here?</h1>
-          <p>sign up and discover</p>
-        </div>
-        <div class="img-text m-in">
-          <h1>One of us?</h1>
-          <p>just sign in</p>
-        </div>
-        <div class="img-btn">
-          <span class="m-up">Sign Up</span>
-          <span class="m-in">Sign In</span>
-        </div>
-      </div>
-      <div class="form sign-up">
-        <h2>Sign Up</h2>
-        <label>
-          <span>Name *</span>
-          <input type="text">
-        </label>
-        <label>
-          <span>Email *</span>
-          <input type="email" v-model="email">
-        </label>
-        <label>
-          <span>Password *</span>
-          <input type="password" v-model="password">
-        </label>
-        <label>
-          <span>Confirm Password *</span>
-          <input type="password" v-model="c_password" @input="check_passwords()">
-          <span class="error capitalize-first" v-if="required_c_password">{{ required_c_password }}</span>
-        </label>
-        <button type="button" class="submit" @click="register()">Sign Up Now</button>
-      </div>
+    <div class="form login"  @click="active_add_remove(0)">
+      <header>Login</header>
+      <form action="#">
+        <input type="text" placeholder="Email address" v-model="email"  />
+        <input type="password" placeholder="Password" v-model="password" />
+        <a href="#">Forgot password?</a>
+        <input type="button" value="Login" @click="login()" />
+      </form>
     </div>
-  </div>
+
+
+  </section>
 </template>
 <script>
 import { loginStore } from "../piniaStore";
@@ -398,6 +36,7 @@ import { loginStore } from "../piniaStore";
 export default {
   data() {
     return {
+      is_active:'',
       email: '',
       required_email: '',
       name: '',
@@ -414,16 +53,19 @@ export default {
   },
   methods:
   {
-    check_passwords()
+    active_add_remove(x)
     {
-      console.log('pass=>',this.password);
-      console.log('c=>',this.c_password);
+      this.is_active = x == 1 ? '' : 'active'
+
+    },
+    check_passwords() {
+      console.log('pass=>', this.password);
+      console.log('c=>', this.c_password);
       if (this.password !== this.c_password) {
         this.required_c_password = 'Password not match'
       }
-      else
-      {
-        this.required_c_password=''
+      else {
+        this.required_c_password = ''
       }
 
     },
@@ -439,31 +81,26 @@ export default {
       console.log(this.email);
 
     },
-    check_all_required_fileds()
-    {
+    check_all_required_fileds() {
       let flag = true;
-      if(this.required_email =='')
-      {
+      if (this.required_email == '') {
         this.required_email = 'Enter E-mail Address'
         return false;
 
       }
-       if(this.required_name =='')
-      {
+      if (this.required_name == '') {
         this.required_email = 'Enter Name'
         return false;
 
       }
-      if(this.required_password =='')
-      {
+      if (this.required_password == '') {
         this.required_email = 'Enter Password'
         return false;
 
       }
-      if(this.required_c_password =='')
-      {
+      if (this.required_c_password == '') {
         this.required_email = 'Enter confirm password'
-        return  false;
+        return false;
 
       }
       console.log(flag);
@@ -472,27 +109,26 @@ export default {
     },
     register() {
       this.$toast.open({
-    message: 'Registration Success!',
-    type: 'success',
-    position: 'top-right'
+        message: 'Registration Success!',
+        type: 'success',
+        position: 'top-right'
 
-    // all of other options may go here
-});
-      this.$http.get("test").then((res)=>{
-          console.log(res.data);
-        })
+        // all of other options may go here
+      });
+      this.$http.get("test").then((res) => {
+        console.log(res.data);
+      })
       let check = this.check_all_required_fileds();
-      
 
-      if(check)
-      {
+
+      if (check) {
 
         console.log('Name->', this.name);
         console.log('Email->', this.email);
         console.log('Password->', this.password);
         console.log('C Password->', this.c_password);
         this.store_login_data.setToken('123')
-       
+
       }
 
 
@@ -507,12 +143,151 @@ export default {
 
   },
   mounted() {
-    function toggleSignup() {
-      var container = document.querySelector('.cont');
-      container.classList.toggle('s-signup');
-    }
-    document.querySelector('.img-btn').addEventListener('click', toggleSignup);
+  
+
+   
+
 
   }
 }
 </script>
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0faff;
+}
+
+.wrapper {
+  position: relative;
+  max-width: 470px;
+  width: 100%;
+  border-radius: 12px;
+  padding: 20px 30px 120px;
+  background: #4070f4;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.form.login {
+  position: absolute;
+  left: 50%;
+  bottom: -86%;
+  transform: translateX(-50%);
+  width: calc(100% + 220px);
+  padding: 20px 140px;
+  border-radius: 50%;
+  height: 100%;
+  background: #fff;
+  transition: all 0.6s ease;
+}
+
+.wrapper.active .form.login {
+  bottom: -15%;
+  border-radius: 35%;
+  box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form header {
+  font-size: 30px;
+  text-align: center;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.form.login header {
+  color: #333;
+  opacity: 0.6;
+}
+
+.wrapper.active .form.login header {
+  opacity: 1;
+}
+
+.wrapper.active .signup header {
+  opacity: 0.6;
+}
+
+.wrapper form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+form input {
+  height: 60px;
+  outline: none;
+  border: none;
+  padding: 0 15px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #333;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.form.login input {
+  border: 1px solid #aaa;
+}
+
+.form.login input:focus {
+  box-shadow: 0 1px 0 #ddd;
+}
+
+form .checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkbox input[type="checkbox"] {
+  height: 16px;
+  width: 16px;
+  accent-color: #fff;
+  cursor: pointer;
+}
+
+form .checkbox label {
+  cursor: pointer;
+  color: #fff;
+}
+
+form a {
+  color: #333;
+  text-decoration: none;
+}
+
+form a:hover {
+  text-decoration: underline;
+}
+
+form input[type="submit"] {
+  margin-top: 15px;
+  padding: none;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.form.login input[type="submit"] {
+  background: #4070f4;
+  color: #fff;
+  border: none;
+}
+
+
+
+</style>
