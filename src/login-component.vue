@@ -162,7 +162,6 @@ export default {
 
     },
     login() {
-      console.log('email=',this.l_email);
       let loginForm = {
         email:this.l_email,
         password:this.l_password,
@@ -178,9 +177,9 @@ export default {
         position: 'top-right'
       });
           }
+          this.$router.replace('/');
           this.store_login_data.setToken(res.data.token)
         })
-      this.$router.replace('/');
 
       }
       else
