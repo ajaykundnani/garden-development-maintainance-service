@@ -18,7 +18,7 @@ export default{
         logout()
         {
             this.$root.store_login_data.removeEveryThing();
-            window.location.href = window.location.href;
+            this.$router.push('/login');
         }
     }
 }

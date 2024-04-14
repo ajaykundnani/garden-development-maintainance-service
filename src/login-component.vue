@@ -1,8 +1,8 @@
 
 <template>
   <section class="wrapper" :class="is_active">
-    <div class="form signup" @click="active_add_remove(1)">
-      <header>Signup</header>
+    <div class="form signup" @click="active_add_remove(1);">
+      <header @click="clear_all_form()">Signup</header>
       <form action="#">
         <input type="text" placeholder="Full name" v-model="name" @input="required_name=''"  />
         <span class="error" v-if="required_name !=''">{{ required_name }}</span>
@@ -27,8 +27,11 @@
     <div class="form login"  @click="active_add_remove(0)">
       <header>Login</header>
       <form action="#">
-        <input type="text" placeholder="Email address" v-model="email"  />
-        <input type="password" placeholder="Password" v-model="password" />
+        <input type="text" placeholder="Email address" v-model="l_email"  />
+        <span class="error" v-if="required_l_email !=''">{{ required_l_email }}</span>
+        <input type="password" placeholder="Password" v-model="l_password"  @input="required_l_password=''"/>
+        <span class="error" v-if="required_l_password !=''">{{ required_l_password }}</span>
+
         <a href="#">Forgot password?</a>
         <input type="button" value="Login" @click="login()" />
       </form>
@@ -44,6 +47,10 @@ export default {
   data() {
     return {
       is_active:'',
+      l_email:'',
+      required_l_email:'',
+      required_l_password:'',
+    l_password:'',
       email: '',
       required_email: '',
       name: '',
@@ -60,6 +67,21 @@ export default {
   },
   methods:
   {
+    clear_all_form()
+    {
+      this.email='';
+      this.l_email='';
+      this.required_l_email='';
+      this.l_password='';
+      this.required_l_password='';
+      this.required_email='';
+      this.required_name=''
+      this.name='';
+      this.password='';
+      this.required_password='';
+      this.c_password='';
+      this.required_c_password='';
+    },
     active_add_remove(x)
     {
       this.is_active = x == 1 ? '' : 'active'
@@ -83,7 +105,6 @@ export default {
         this.required_email = 'Invalid Email Address'
       }
 
-      console.log(this.email);
 
     },
     check_all_required_fileds() {
@@ -141,11 +162,14 @@ export default {
 
     },
     login() {
+      console.log('email=',this.l_email);
       let loginForm = {
-        email:this.email,
-        password:this.password,
+        email:this.l_email,
+        password:this.l_password,
       }
-      this.$http.post("login",loginForm).then((res) => {
+      if(this.l_email != '' && this.l_password !='')
+      {
+        this.$http.post("login",loginForm).then((res) => {
           if(res.data.status_code ==200)
           {
             this.$toast.open({
@@ -157,6 +181,22 @@ export default {
           this.store_login_data.setToken(res.data.token)
         })
       this.$router.replace('/');
+
+      }
+      else
+      {
+        console.log('here');
+        if(this.l_email == '')
+        {
+          this.required_l_email = 'Enter email Address'
+          console.log('email',this.required_l_email);
+        }
+        if(this.l_password == '')
+        {
+          this.required_l_password = 'Enter password'
+        }
+      }
+      
 
     }
 
@@ -194,7 +234,7 @@ body {
 .wrapper {
   position: relative;
   max-width: 470px;
-  width: 100%;
+  width: 160%;
   border-radius: 12px;
   padding: 20px 30px 120px;
   background: #4070f4;
