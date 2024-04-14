@@ -234,7 +234,7 @@ body {
 .wrapper {
   position: relative;
   max-width: 470px;
-  width: 160%;
+  width: 143%;
   border-radius: 12px;
   padding: 20px 30px 120px;
   background: #4070f4;
