@@ -100,12 +100,12 @@ export default {
       }
       
       if (this.password == '') {
-        this.required_email = 'Enter Password'
+        this.required_password = 'Enter Password'
         return false;
 
       }
       if (this.c_password == '') {
-        this.required_email = 'Enter confirm password'
+        this.required_c_password = 'Enter confirm password'
         return false;
 
       }
@@ -122,7 +122,7 @@ export default {
           name:this.name,
           email:this.email,
           password:this.password,
-          confirmPassword:this.confirmPassword,
+          confirmPassword:this.c_password,
         }
 
         this.$http.post("register",regist).then((res) => {
