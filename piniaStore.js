@@ -11,9 +11,13 @@ export const loginStore = defineStore({
         
         setToken: function (token) {
             this.token = token;
-            localStorage.setItem("jwt",'123')
+            localStorage.setItem("jwt",token)
             
         },
+        removeEveryThing()
+        {
+            localStorage.clear();
+        }
         
     },
 });

@@ -132,28 +132,30 @@ export default {
         message: 'Registration Success!',
         type: 'success',
         position: 'top-right'
-
-        // all of other options may go here
       });
-      this.active_add_remove(0)
-
+            this.active_add_remove(0)
           }
         })
         
       }
 
-
-      // if (check) {
-
-
-      // }
-
-
     },
     login() {
-      console.log('Email->', this.email);
-      console.log('Password->', this.password);
-      this.store_login_data.setToken('123')
+      let loginForm = {
+        email:this.email,
+        password:this.password,
+      }
+      this.$http.post("login",loginForm).then((res) => {
+          if(res.data.status_code ==200)
+          {
+            this.$toast.open({
+        message: 'Login Success!',
+        type: 'success',
+        position: 'top-right'
+      });
+          }
+          this.store_login_data.setToken(res.data.token)
+        })
       this.$router.replace('/');
 
     }
