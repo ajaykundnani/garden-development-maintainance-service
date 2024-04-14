@@ -1,16 +1,37 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <router-view >
+    
+  </router-view>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { loginStore } from "../piniaStore";
+
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
+  data()
+  {
+    return{
+      store_login_data: loginStore(),
+
+      is_login:false,
+    }
+  },
+  components() {
+  },
+  mounted() {
+    this.is_login = this.store_login_data.token ? true:false
+    if(this.is_login)
+    {
+      this.$router.push('/dashboard');
+      
+    }
+    else{
+      this.$router.push('/login');
+    }
+    
+  },
 }
 </script>
 
