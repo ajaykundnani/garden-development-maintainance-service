@@ -88,23 +88,23 @@ export default {
     },
     check_all_required_fileds() {
       let flag = true;
-      if (this.required_name == '') {
+      if (this.name == '') {
         this.required_name = 'Enter Name'
         return false;
 
       }
-      if (this.required_email == '') {
+      if (this.email == '') {
         this.required_email = 'Enter E-mail Address'
         return false;
 
       }
       
-      if (this.required_password == '') {
+      if (this.password == '') {
         this.required_email = 'Enter Password'
         return false;
 
       }
-      if (this.required_c_password == '') {
+      if (this.c_password == '') {
         this.required_email = 'Enter confirm password'
         return false;
 
