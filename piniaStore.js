@@ -16,6 +16,7 @@ export const loginStore = defineStore({
         },
         removeEveryThing()
         {
+            this.token='';
             localStorage.clear();
         }
         

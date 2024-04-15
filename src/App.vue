@@ -1,40 +1,29 @@
 <template>
-  <router-view >
-    
-  </router-view>
+  <router-view> </router-view>
 </template>
-
 <script>
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import { loginStore } from "../piniaStore";
-
-
 export default {
-  name: 'App',
-  data()
-  {
-    return{
+  name: "App",
+  data() {
+    return {
       store_login_data: loginStore(),
-
-      is_login:false,
-    }
+      is_login: false,
+    };
   },
-  components() {
-  },
+  components() {},
   mounted() {
-    this.is_login = this.store_login_data.token ? true:false
-    if(this.is_login)
-    {
-      this.$router.push('/dashboard');
-      
+    this.is_login = this.store_login_data.token ? true : false;
+    if (this.is_login) {
+      this.$router.push("/dashboard");
+    } else {
+      this.$router.push("/login");
     }
-    else{
-      this.$router.push('/login');
-    }
-    
   },
-}
+};
 </script>
-
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

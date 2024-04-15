@@ -5,7 +5,7 @@ import { createPinia } from "pinia";
 import axios from 'axios'
 import ToastPlugin from 'vue-toast-notification';
 import 'vue-toast-notification/dist/theme-bootstrap.css';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const api_url='http://localhost:4000/'
