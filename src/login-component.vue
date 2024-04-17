@@ -146,6 +146,7 @@ export default {
           email: this.email,
           password: this.password,
           confirmPassword: this.c_password,
+          phone:'9990001112'
         };
         this.$http.post("register", regist).then((res) => {
           if (res.data.status_code == 200) {
@@ -161,7 +162,7 @@ export default {
     },
     login() {
       // this.$router.replace("/");
-      // this.store_login_data.setToken("123");
+      // this.store_login_data.SetTokenUserData("123");
       if (this.l_email && this.l_password) {
         const loginForm = {
           email: this.l_email,
@@ -176,7 +177,7 @@ export default {
             });
           }
           this.$router.replace("/");
-          this.store_login_data.setToken(res.data.token);
+          this.store_login_data.SetTokenUserData(res.data.token,res.data.user_name);
         });
       } else {
         if (!this.l_email) {

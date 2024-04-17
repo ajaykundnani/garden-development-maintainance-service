@@ -8,7 +8,7 @@ import 'vue-toast-notification/dist/theme-bootstrap.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-const api_url='http://localhost:4000/'
+const api_url='http://127.0.0.1:8000/api/'
 // const api_url='https://dummy.restapiexample.com/api/v1/'
 
 const pinia = createPinia()

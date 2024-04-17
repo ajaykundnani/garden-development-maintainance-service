@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Welcome User Dashboard</h1>
+    <h1>Welcome {{$root.store_login_data.user_name}} </h1>
     <span class="danger" @click="logout()">Logout</span>
   </div>
 </template>
